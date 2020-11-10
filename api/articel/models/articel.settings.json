@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articels",
+  "info": {
+    "name": "articel"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "articels"
+    }
+  }
+}
